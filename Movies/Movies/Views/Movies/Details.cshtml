@@ -1,0 +1,40 @@
+﻿@model Movies.Models.FilmDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div> 
+    <hr />
+        <div class="row">
+            <div class="span2">
+                <img width="200px"   style="float:left" src="@Url.Content("~/Images/FilmsImg/" + Model.Poster)"/>
+                <div class="content-heading"><h4>@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.Date) &nbsp </h4></div>
+                <p>@Html.DisplayFor(model => model.Description)</p>
+            </div>
+        </div>
+    
+ 
+
+    <dl class="">
+        <dt>
+            @Html.DisplayNameFor(model => model.Producer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producer)
+        </dd>
+        <a href="@Model.TrailerUrl">Посмотреть трейлер</a>
+    </dl>
+    
+</div>
+<p>
+    @if (Model.AllowEdit)
+    {
+        @Html.ActionLink("Изменить", "Edit", new { id = Model.ID }) <span>|</span>
+    }
+    @Html.ActionLink("Назад к списку", "Index")
+</p>

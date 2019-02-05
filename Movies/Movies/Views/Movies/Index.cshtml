@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Список фильмов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Movies.Models.FilmView>
+
+@{
+    ViewBag.Title = "Список фильмов";
+}
+
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+    ul.pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+
+    ul.pagination li a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    ul.pagination li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <center>
+        <h2>Список фильмов</h2>
+        <div class="table">
+            <table style="width:100%">
+                <tr>
+                    <th>@Html.Label("Название")</th>
+                    <th>@Html.Label("Дата премьеры")</th>
+                    <th>@Html.Label("Режиссёр")</th>
+                </tr>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr >
+                        <td>
+                            @Html.ActionLink(Model[i].Name, "Details", "Movies",
+                                new { id = Model[i].ID }, null)
+                            </td>
+                        <td>@Model[i].Date</td>
+                        <td>@Model[i].Producer</td>
+                       
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </center>
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+  
+}   
+<div> @Html.ActionLink("Добавить фильм", "Create", "Movies")</div>
