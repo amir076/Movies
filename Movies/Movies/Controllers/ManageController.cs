@@ -11,7 +11,7 @@ using Movies.Models;
 namespace Movies.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : Controllerdsasadsa
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
