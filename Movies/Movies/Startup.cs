@@ -9,6 +9,7 @@ namespace Movies
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+sadfasdf
         }
     }
 }
