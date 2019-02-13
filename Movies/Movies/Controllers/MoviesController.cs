@@ -8,11 +8,11 @@ using System.Web.Mvc;
 using PagedList;
 using Movies.Services;
 
-namespace Movies.Controllers
+namespace Movies.ControllerscxzCZXCzxc
 {
 
     public class MoviesController : Controller
-    {
+    {длжэлджэ
         private string CurrentUserName()
         {
             return this.User.Identity.Name;
